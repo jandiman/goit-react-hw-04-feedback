@@ -11,12 +11,12 @@ export const App = () => {
     bad: 0,
   });
 
-  const countTotalFeedback = () => {
+  countTotalFeedback = () => {
     const { good, neutral, bad } = feedback;
     return good + neutral + bad;
   };
 
-  const countPositiveFeedbackPercentage = () => {
+  countPositiveFeedbackPercentage = () => {
     const { good } = feedback;
     const total = countTotalFeedback();
 
@@ -35,24 +35,28 @@ export const App = () => {
   const positivePercentage = countPositiveFeedbackPercentage();
   const options = ['good', 'neutral', 'bad'];
 
-  return (
-    <div>
-      <Section title="Please leave a feedback">
-        <FeedbackOptions options={options} onLeaveFeedback={handleClick} />
-      </Section>
-      <Section title="Statistics">
-        {total > 0 ? (
-          <Statistics
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            total={total}
-            positivePercentage={positivePercentage}
+    return (
+      <div>
+        <Section title="Please leave a feedback">
+          <FeedbackOptions
+            options={options}
+            onLeaveFeedback={handleClick}
           />
-        ) : (
-          <Notifs message="There is no feedback" />
-        )}
-      </Section>
-    </div>
-  );
-};
+        </Section>
+        <Section title="Statistics">
+          {total > 0 ? (
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={total}
+              positivePercentage={positivePercentage}
+            />
+          ) : (
+            <Notifs message="There is no feedback" />
+          )}
+        </Section>
+      </div>
+    );
+  }
+}

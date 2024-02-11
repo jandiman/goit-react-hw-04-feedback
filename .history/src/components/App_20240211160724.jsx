@@ -11,12 +11,12 @@ export const App = () => {
     bad: 0,
   });
 
-  const countTotalFeedback = () => {
+  countTotalFeedback = () => {
     const { good, neutral, bad } = feedback;
     return good + neutral + bad;
   };
 
-  const countPositiveFeedbackPercentage = () => {
+  countPositiveFeedbackPercentage = () => {
     const { good } = feedback;
     const total = countTotalFeedback();
 
